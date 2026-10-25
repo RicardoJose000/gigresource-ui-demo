@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GigResource | Dashboard Demo</title>
+<meta name="description" content="Live dashboard demo for the GigResource UI refinement: five user types, refined sidebar, every tab and state.">
+<meta name="theme-color" content="#050816">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232dd4bf'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M44 22a14 14 0 1 0 2 14H33' fill='none' stroke='%23050816' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body class="app-body">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset=".6" stop-color="#7c5cff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="17" fill="url(#gm)"/>
+      <rect x="1" y="1" width="62" height="62" rx="16" fill="none" stroke="rgba(255,255,255,.35)"/>
+      <path d="M44 22a14 14 0 1 0 2 14H33" fill="none" stroke="#050816" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="app" id="app" data-sb="expanded">
+
+  <aside class="sb" id="sb" aria-label="Main navigation">
+    <div class="sb-head">
+      <a class="sb-logo" href="index.html" title="Back to overview"><svg><use href="#mark"/></svg><b>GigResource</b></a>
+      <button class="sb-toggle" id="sbToggle" aria-label="Collapse sidebar"><i data-lucide="chevron-left"></i></button>
+      <button class="sb-close" id="sbClose" aria-label="Close menu"><i data-lucide="x"></i></button>
+    </div>
+
+    <div class="sb-role">
+      <button class="role-btn" id="roleBtn" aria-haspopup="menu" aria-expanded="false">
+        <span class="role-ico" id="roleIco">C</span>
+        <span class="role-txt"><b id="roleName">Client</b><small id="roleSub">Switch user type</small></span>
+        <i class="chev" data-lucide="chevrons-up-down"></i>
+      </button>
+      <div class="role-menu" id="roleMenu" role="menu"></div>
+    </div>
+
+    <div class="sb-scroll" id="sbScroll">
+      <nav class="sb-nav" id="sbNav"></nav>
+    </div>
+
+    <div class="sb-foot">
+      <div class="promo" id="promo">
+        <video muted loop playsinline autoplay poster="assets/video/data-wave.jpg" data-src="assets/video/data-wave.mp4"></video>
+        <div><b id="promoTitle">Invite and earn</b><small id="promoText">Get $50 for every client you bring.</small><a href="#" id="promoCta" data-toast="Invite link copied">Copy invite link</a></div>
+      </div>
+      <div class="me">
+        <img id="meAv" src="assets/img/av-sofia.jpg" alt="">
+        <span><b id="meName">Sofia Reyes</b><small id="meSub">Client account</small></span>
+        <button aria-label="Sign out" data-toast="This is a demo, you stay signed in"><i data-lucide="log-out"></i></button>
+      </div>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim"></div>
+
+  <div class="main">
+    <header class="top">
+      <button class="burger" id="burger" aria-label="Open menu"><i data-lucide="menu"></i></button>
+      <div class="crumbs"><span class="rdot"></span><span class="rtxt" id="crumbRole">Client</span><i class="sep" data-lucide="chevron-right"></i><b id="crumbPage">Dashboard</b></div>
+      <label class="search"><i data-lucide="search"></i><input type="search" placeholder="Search jobs, people, invoices" aria-label="Search"><kbd>Ctrl K</kbd></label>
+      <div class="top-actions">
+        <button class="icon-btn search-ico" aria-label="Search"><i data-lucide="search"></i></button>
+        <a class="icon-btn help" href="index.html" aria-label="Project overview"><i data-lucide="sparkles"></i></a>
+        <div style="position:relative">
+          <button class="icon-btn" id="bell" aria-label="Notifications"><i data-lucide="bell"></i><span class="dot"></span></button>
+          <div class="notif" id="notif"></div>
+        </div>
+        <button class="avatar-btn" aria-label="Account"><img id="topAv" src="assets/img/av-sofia.jpg" alt=""></button>
+      </div>
+    </header>
+
+    <main class="page" id="page" tabindex="-1"></main>
+  </div>
+
+  <div class="dock" id="dock" role="group" aria-label="Preview page state">
+    <span><i data-lucide="layers"></i>State</span>
+    <button class="on" data-state="default">Default</button>
+    <button data-state="loading">Loading</button>
+    <button data-state="empty">Empty</button>
+    <button data-state="error">Error</button>
+  </div>
+</div>
+
+<div class="tip" id="tip"></div>
+<div class="modal-wrap" id="modalWrap"><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
+<div class="toasts" id="toasts"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

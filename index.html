@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GigResource | UI Refinement Concept</title>
+<meta name="description" content="Concept demo for the GigResource UI refinement: polished sidebar, real layouts for mobile, laptop and desktop, and every page state across five user types.">
+<meta name="theme-color" content="#050816">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232dd4bf'/%3E%3Cstop offset='1' stop-color='%238b5cf6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M44 22a14 14 0 1 0 2 14H33' fill='none' stroke='%23050816' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/showcase.css">
+<script>document.documentElement.classList.remove('no-js')</script>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset=".6" stop-color="#7c5cff"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+    <symbol id="mark" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="17" fill="url(#gm)"/>
+      <rect x="1" y="1" width="62" height="62" rx="16" fill="none" stroke="rgba(255,255,255,.35)"/>
+      <path d="M44 22a14 14 0 1 0 2 14H33" fill="none" stroke="#050816" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+
+<!-- preloader -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-panels"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="loader-inner">
+    <svg class="loader-mark"><use href="#mark"/></svg>
+    <div class="loader-count"><b id="loadNum">0</b>%</div>
+    <div class="loader-label">Loading the refined UI</div>
+    <div class="loader-bar"><i id="loadBar"></i></div>
+  </div>
+</div>
+
+<!-- nav -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top" aria-label="GigResource home">
+      <svg class="brand-mark"><use href="#mark"/></svg>
+      GigResource <small>UI Refinement</small>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#refine">Refine</a>
+      <a href="#sidebar">Sidebar</a>
+      <a href="#devices">Devices</a>
+      <a href="#roles">User types</a>
+      <a href="#states">States</a>
+      <a href="#plan">Plan</a>
+    </nav>
+    <a class="btn btn-primary" href="app.html" data-magnetic>Open live demo <i data-lucide="arrow-up-right"></i></a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero grain" id="hero">
+  <div class="hero-media">
+    <video autoplay muted loop playsinline preload="auto" poster="assets/video/hero-map.jpg">
+      <source src="assets/video/hero-map.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-grid"></div>
+  <div class="hero-shade"></div>
+  <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+
+  <div class="wrap">
+    <div class="hero-tag h-in"><b>Live concept</b> Refine, don't replace</div>
+    <h1>
+      <span class="line"><span>GigResource,</span></span>
+      <span class="line"><span class="grad">refined.</span></span>
+    </h1>
+    <p class="lead h-in">Same colors. Same navigation. Same structure. A polished sidebar, real layouts for mobile, laptop and desktop, and every tab designed in every state, across all five user types.</p>
+    <div class="hero-cta h-in">
+      <a class="btn btn-primary" href="app.html" data-magnetic>Open the live dashboard <i data-lucide="arrow-right"></i></a>
+      <a class="btn btn-ghost" href="#sidebar" data-magnetic><i data-lucide="panel-left"></i> See the sidebar</a>
+    </div>
+    <div class="hero-stats h-in">
+      <div><b data-count="5">0</b><span>User types</span></div>
+      <div><b data-count="3">0</b><span>Device layouts</span></div>
+      <div><b data-count="43" data-suffix="+">0</b><span>Pages in this demo</span></div>
+      <div><b data-count="4">0</b><span>States per page</span></div>
+    </div>
+  </div>
+
+  <div class="scroll-hint"><i></i>Scroll</div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span><i style="background:var(--teal)"></i>Client</span><span><i style="background:var(--purple)"></i>Professional</span><span><i style="background:var(--orange)"></i>Influencer</span><span><i style="background:var(--navy-hi)"></i>Admin</span><span><i style="background:var(--green)"></i>Affiliate</span><span><i style="background:var(--teal)"></i>Sidebar first</span><span><i style="background:var(--purple)"></i>Mobile, laptop, desktop</span><span><i style="background:var(--orange)"></i>Every tab, every state</span><span><i style="background:var(--green)"></i>Built for change</span>
+      <span><i style="background:var(--teal)"></i>Client</span><span><i style="background:var(--purple)"></i>Professional</span><span><i style="background:var(--orange)"></i>Influencer</span><span><i style="background:var(--navy-hi)"></i>Admin</span><span><i style="background:var(--green)"></i>Affiliate</span><span><i style="background:var(--teal)"></i>Sidebar first</span><span><i style="background:var(--purple)"></i>Mobile, laptop, desktop</span><span><i style="background:var(--orange)"></i>Every tab, every state</span><span><i style="background:var(--green)"></i>Built for change</span>
+    </div>
+  </div>
+</section>
+
+<!-- REFINE / COMPARE -->
+<section class="sec" id="refine">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow rv">01 / Refine, don't replace</span>
+        <h2 class="h2 rv">Nothing removed.<br><em>Everything polished.</em></h2>
+      </div>
+      <div>
+        <p class="lead rv">Drag the handle. Same menu, same pages, same colors. The difference is alignment, spacing, clear states and a layout that feels like one product.</p>
+        <div class="palette rv">
+          <span><i style="background:#1b2a5e"></i>Navy</span>
+          <span><i style="background:var(--teal)"></i>Teal</span>
+          <span><i style="background:var(--purple)"></i>Purple</span>
+          <span><i style="background:var(--green)"></i>Green</span>
+          <span><i style="background:var(--orange)"></i>Orange</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare rv" id="compare" style="--pos:50%">
+      <div class="cmp-layer cmp-before">
+        <span class="cmp-label">Before</span>
+        <div class="mini-sb">
+          <div class="logo">GigResource</div>
+          <a><i data-lucide="home"></i><span class="label-t">Dashboard</span></a>
+          <a><i data-lucide="briefcase"></i><span class="label-t">My Jobs</span></a>
+          <a><i data-lucide="inbox"></i><span class="label-t">Proposals</span><span class="tag">12</span></a>
+          <a><i data-lucide="message-square"></i><span class="label-t">Messages</span></a>
+          <a><i data-lucide="file-text"></i><span class="label-t">Contracts</span></a>
+          <a><i data-lucide="wallet"></i><span class="label-t">Payments</span></a>
+          <a><i data-lucide="settings"></i><span class="label-t">Settings</span></a>
+        </div>
+        <div class="mini-main">
+          <h4>Dashboard</h4>
+          <div class="b-cards">
+            <div>Active jobs<b>8</b></div>
+            <div>Proposals<b>34</b></div>
+            <div>Spent<b>$12,480</b></div>
+          </div>
+          <div class="b-table">
+            <div><span>Job</span><span>Bids</span><span>Status</span></div>
+            <div><span>Landing page redesign</span><span>14</span><span>open</span></div>
+            <div><span>Brand video edit</span><span>9</span><span>in progress</span></div>
+            <div><span>Shopify fixes</span><span>21</span><span>open</span></div>
+          </div>
+          <span class="b-btn">+ Post job</span>
+        </div>
+      </div>
+
+      <div class="cmp-layer cmp-after">
+        <span class="cmp-label">After</span>
+        <div class="mini-sb">
+          <div class="logo"><i></i>GigResource</div>
+          <div class="grp">Main</div>
+          <a class="on"><i data-lucide="layout-dashboard"></i><span class="label-t">Dashboard</span></a>
+          <a><i data-lucide="briefcase"></i><span class="label-t">My Jobs</span></a>
+          <a class="hv"><i data-lucide="inbox"></i><span class="label-t">Proposals</span><span class="pill">12</span></a>
+          <a><i data-lucide="message-square"></i><span class="label-t">Messages</span><span class="pill">5</span></a>
+          <div class="grp">Money</div>
+          <a><i data-lucide="file-text"></i><span class="label-t">Contracts</span></a>
+          <a><i data-lucide="wallet"></i><span class="label-t">Payments</span></a>
+        </div>
+        <div class="mini-main">
+          <h4>Good morning, Sofia<small>Here is what moved on your jobs this week</small></h4>
+          <div class="a-cards">
+            <div><i style="background:var(--teal)"></i>Active jobs<b>8<em>+2</em></b></div>
+            <div><i style="background:var(--purple)"></i>Proposals<b>34<em>+11</em></b></div>
+            <div><i style="background:var(--orange)"></i>Spent<b>$12.4k</b></div>
+          </div>
+          <div class="a-table">
+            <div><span>Job</span><span>Bids</span><span>Status</span></div>
+            <div><span>Landing page redesign</span><span>14</span><span class="st st-green">Open</span></div>
+            <div><span>Brand video edit</span><span>9</span><span class="st st-purple">In progress</span></div>
+            <div><span>Shopify fixes</span><span>21</span><span class="st st-orange">Review</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cmp-handle"><b><i data-lucide="move-horizontal"></i></b></div>
+    </div>
+
+    <div class="cmp-notes">
+      <div class="rv"><b><i data-lucide="align-left"></i>Aligned icons</b><p>One size, one stroke, one baseline on every item.</p></div>
+      <div class="rv"><b><i data-lucide="mouse-pointer-click"></i>Clear states</b><p>Active, hover, focus and badges you can read at a glance.</p></div>
+      <div class="rv"><b><i data-lucide="rows-3"></i>Even spacing</b><p>A 4px grid so every page lines up the same way.</p></div>
+      <div class="rv"><b><i data-lucide="palette"></i>Your colors</b><p>Navy, teal, purple, green and orange, used with purpose.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIDEBAR PLAYGROUND -->
+<section class="sec" id="sidebar" style="padding-top:0">
+  <div class="wrap play">
+    <div>
+      <span class="eyebrow rv">02 / Sidebar first</span>
+      <h2 class="h2 rv">The part users touch <em>on every page.</em></h2>
+      <p class="lead rv">Try it. Switch devices, switch user types, and click through the states. Same items and order everywhere. Only the way it opens changes.</p>
+
+      <div class="play-ctrls rv">
+        <div>
+          <label>Device</label>
+          <div class="seg" id="modeSeg">
+            <button class="on" data-mode="expanded"><i data-lucide="monitor"></i>Desktop</button>
+            <button data-mode="collapsed"><i data-lucide="laptop"></i>Laptop</button>
+            <button data-mode="mobile"><i data-lucide="smartphone"></i>Mobile</button>
+          </div>
+        </div>
+        <div>
+          <label>User type</label>
+          <div class="chips" id="roleChips"></div>
+        </div>
+        <div>
+          <label>Preview a state</label>
+          <div class="chips" id="stateChips">
+            <button class="chip on" data-st="active">Active</button>
+            <button class="chip" data-st="hover">Hover</button>
+            <button class="chip" data-st="focus">Keyboard focus</button>
+            <button class="chip" data-st="badge">Badge</button>
+            <button class="chip" data-st="tooltip">Collapsed tooltip</button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="specs rv">
+        <li><b>Icons</b>20px in a 24px box, same stroke, same line</li>
+        <li><b>Rows</b>42px desktop and laptop, 48px tap targets on mobile</li>
+        <li><b>Active</b>Teal bar plus soft teal fill, slides between items</li>
+        <li><b>Laptop</b>Collapses to a 72px rail with tooltips</li>
+        <li><b>Mobile</b>Slide-in drawer, closes on tap outside or Esc</li>
+      </ul>
+    </div>
+
+    <div class="stage rv" id="stage" data-mode="expanded">
+      <div class="ps-screen" id="psScreen">
+        <aside class="ps" id="ps">
+          <div class="ps-logo"><i></i><b>GigResource</b></div>
+          <div class="ps-role"><i id="psRoleIcon">C</i><span><b id="psRoleName">Client</b><small>Switch user type</small></span></div>
+          <div class="ps-grp">Main</div>
+          <div class="ps-nav" id="psNav"><div class="ps-ind" id="psInd"></div></div>
+        </aside>
+        <div class="ps-scrim" id="psScrim"></div>
+        <div class="ps-content">
+          <div class="ps-top"><button class="burger" id="psBurger" aria-label="Open menu"><i data-lucide="menu"></i></button><b id="psTitle">Dashboard</b><span class="sp"></span></div>
+          <div class="ps-banner"><video autoplay muted loop playsinline poster="assets/video/desk.jpg" data-src="assets/video/desk.mp4"></video><div>Welcome back<small>3 new proposals since yesterday</small></div></div>
+          <div class="ps-kpis"><div>Active<b>8</b></div><div>Proposals<b>34</b></div><div>Spent<b>$12.4k</b></div></div>
+          <div class="ps-rows">
+            <div><i style="background-image:url(assets/img/av-daniel.jpg)"></i><span></span><em></em></div>
+            <div><i style="background-image:url(assets/img/av-leila.jpg)"></i><span></span><em></em></div>
+            <div><i style="background-image:url(assets/img/av-marcus.jpg)"></i><span></span><em></em></div>
+          </div>
+        </div>
+        <div class="ps-tip" id="psTip">Messages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEVICES -->
+<section class="devices-sec" id="devices">
+  <div class="devices-pin" id="devicesPin">
+    <div class="wrap">
+      <div style="text-align:center">
+        <span class="eyebrow rv">03 / Three devices</span>
+        <h2 class="h2 rv">Three real layouts. <em>Not one shrunk.</em></h2>
+        <p class="lead rv" style="margin-inline:auto">These are the live dashboard running inside each screen. Desktop shows the full sidebar, laptop collapses to a rail, mobile gets its own layout with a drawer.</p>
+      </div>
+      <div class="devices" id="deviceRow">
+        <div class="dev dev-laptop">
+          <div class="lid"><div class="screen" data-w="1280" data-h="800"><iframe title="Laptop preview" data-src="app.html?embed=1&role=professional#/professional/dashboard" loading="lazy"></iframe><div class="shine"></div></div></div>
+          <div class="base"></div>
+          <div class="dev-cap"><b>Laptop</b><span>1024 - 1439px, collapsed rail</span></div>
+        </div>
+        <div class="dev dev-desktop">
+          <div class="bezel"><div class="screen" data-w="1440" data-h="900"><iframe title="Desktop preview" data-src="app.html?embed=1&role=client#/client/dashboard" loading="lazy"></iframe><div class="shine"></div></div></div>
+          <div class="stand"></div><div class="foot"></div>
+          <div class="dev-cap"><b>Desktop</b><span>1440px and up, full sidebar</span></div>
+        </div>
+        <div class="dev dev-phone">
+          <div class="body"><div class="screen" data-w="390" data-h="844"><iframe title="Mobile preview" data-src="app.html?embed=1&role=influencer#/influencer/dashboard" loading="lazy"></iframe><div class="shine"></div></div></div>
+          <div class="dev-cap"><b>Mobile</b><span>Built for thumbs</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section class="sec" id="roles">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow rv">04 / Five user types</span>
+        <h2 class="h2 rv">One system. <em>Five worlds.</em></h2>
+      </div>
+      <p class="lead rv">Every user type shares the same shell, sidebar and parts, so page 80 looks as good as page 1. Hover a card, then open that dashboard.</p>
+    </div>
+    <div class="bento" id="bento">
+      <a class="role rv" href="app.html?role=client#/client/dashboard">
+        <img src="assets/img/role-client.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/video/meeting.mp4"></video>
+        <span class="role-tag"><i style="color:var(--teal);background:var(--teal)"></i>Client</span>
+        <div class="role-in"><h3>Post work, hire fast, pay safely.</h3><p>Dashboard, jobs, proposals, contracts and payments in one calm flow.</p><div class="pages"><span>Dashboard</span><span>My Jobs</span><span>Proposals</span><span>Contracts</span><span>Payments</span></div><span class="go">Open as Client <i data-lucide="arrow-right"></i></span></div>
+      </a>
+      <a class="role rv" href="app.html?role=professional#/professional/dashboard">
+        <img src="assets/img/role-pro.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/video/typing.mp4"></video>
+        <span class="role-tag"><i style="color:var(--purple);background:var(--purple)"></i>Professional</span>
+        <div class="role-in"><h3>Find work. Win it. Get paid.</h3><div class="pages"><span>Find Work</span><span>My Bids</span><span>Projects</span><span>Earnings</span></div><span class="go">Open as Professional <i data-lucide="arrow-right"></i></span></div>
+      </a>
+      <a class="role rv" href="app.html?role=influencer#/influencer/dashboard">
+        <img src="assets/img/role-influencer.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/video/phone-cafe.mp4"></video>
+        <span class="role-tag"><i style="color:var(--orange);background:var(--orange)"></i>Influencer</span>
+        <div class="role-in"><h3>Campaigns, offers, content.</h3><div class="pages"><span>Campaigns</span><span>Offers</span><span>Content</span><span>Earnings</span></div><span class="go">Open as Influencer <i data-lucide="arrow-right"></i></span></div>
+      </a>
+      <a class="role rv" href="app.html?role=admin#/admin/dashboard">
+        <img src="assets/img/role-admin.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/video/server.mp4"></video>
+        <span class="role-tag"><i style="color:var(--navy-hi);background:var(--navy-hi)"></i>Admin</span>
+        <div class="role-in"><h3>See everything. Act fast.</h3><div class="pages"><span>Overview</span><span>Users</span><span>Disputes</span><span>Payouts</span></div><span class="go">Open as Admin <i data-lucide="arrow-right"></i></span></div>
+      </a>
+      <a class="role rv" href="app.html?role=affiliate#/affiliate/dashboard">
+        <img src="assets/img/role-affiliate.jpg" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="assets/video/team.mp4"></video>
+        <span class="role-tag"><i style="color:var(--green);background:var(--green)"></i>Affiliate</span>
+        <div class="role-in"><h3>Share links. Track every dollar.</h3><div class="pages"><span>Links</span><span>Referrals</span><span>Commissions</span></div><span class="go">Open as Affiliate <i data-lucide="arrow-right"></i></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATES -->
+<section id="states">
+  <div class="states-pin" id="statesPin">
+    <div class="wrap">
+      <span class="eyebrow rv">05 / Every page, every state</span>
+      <h2 class="h2 rv">Not just the default view.</h2>
+      <p class="lead rv">Each tab and sub-view is designed for what really happens: loading, nothing yet, something broke, and long content.</p>
+    </div>
+    <div class="states-track" id="statesTrack">
+      <div class="scard">
+        <div class="scard-h"><b><span>01</span>Default</b><em>Filled</em></div>
+        <div class="scard-body">
+          <div class="mrow"><img src="assets/img/av-amara.jpg" alt=""><b>Amara Osei</b><span class="st st-green">Hired</span></div>
+          <div class="mrow"><img src="assets/img/av-james.jpg" alt=""><b>James Carter</b><span class="st st-purple">Interview</span></div>
+          <div class="mrow"><img src="assets/img/av-nina.jpg" alt=""><b>Nina Park</b><span class="st st-orange">New</span></div>
+          <div class="mrow"><img src="assets/img/av-oliver.jpg" alt=""><b>Oliver Grant</b><span class="st st-orange">New</span></div>
+          <div class="mrow"><img src="assets/img/av-grace.jpg" alt=""><b>Grace Liu</b><span class="st st-green">Hired</span></div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-h"><b><span>02</span>Tabs and sub-views</b><em>Each tab</em></div>
+        <div class="scard-body">
+          <div class="mini-tabs" id="miniTabs"><span class="on">All 34</span><span>Shortlist 6</span><span>Archived</span><i></i></div>
+          <div class="mrow"><img src="assets/img/av-elena.jpg" alt=""><b>Elena Rossi</b><span class="st st-purple">$45/hr</span></div>
+          <div class="mrow"><img src="assets/img/av-ryan.jpg" alt=""><b>Ryan Brooks</b><span class="st st-purple">$60/hr</span></div>
+          <div class="mrow"><img src="assets/img/av-zoe.jpg" alt=""><b>Zoe Adams</b><span class="st st-purple">$38/hr</span></div>
+          <div class="mrow"><img src="assets/img/av-henry.jpg" alt=""><b>Henry Walsh</b><span class="st st-purple">$52/hr</span></div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-h"><b><span>03</span>Loading</b><em>Skeleton</em></div>
+        <div class="scard-body" style="display:grid;gap:12px;align-content:start">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px"><div class="sk" style="height:58px"></div><div class="sk" style="height:58px"></div><div class="sk" style="height:58px"></div></div>
+          <div class="sk" style="height:90px"></div>
+          <div style="display:flex;gap:10px;align-items:center"><div class="sk" style="width:30px;height:30px;border-radius:50%"></div><div class="sk" style="height:10px;flex:1"></div></div>
+          <div style="display:flex;gap:10px;align-items:center"><div class="sk" style="width:30px;height:30px;border-radius:50%"></div><div class="sk" style="height:10px;flex:.7"></div></div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-h"><b><span>04</span>Empty</b><em>Nothing yet</em></div>
+        <div class="scard-body">
+          <div class="empty-ill">
+            <div>
+              <svg viewBox="0 0 120 90" fill="none"><rect x="14" y="20" width="92" height="60" rx="10" fill="#121b3d" stroke="#2a3768"/><rect x="26" y="10" width="68" height="14" rx="5" fill="#18234d" stroke="#2a3768"/><circle cx="60" cy="50" r="15" fill="rgba(45,212,191,.14)" stroke="#2dd4bf" stroke-width="2"/><path d="M54 50h12M60 44v12" stroke="#2dd4bf" stroke-width="2.4" stroke-linecap="round"/><circle cx="100" cy="16" r="4" fill="#fb923c"/><circle cx="16" cy="70" r="3" fill="#8b5cf6"/></svg>
+              <b>No archived jobs</b><p>Jobs you close will show up here.</p><a>Post a job</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-h"><b><span>05</span>Error</b><em>Recoverable</em></div>
+        <div class="scard-body">
+          <div class="err-box"><i data-lucide="alert-triangle"></i><div><b>Payments did not load</b><p>Your connection dropped. Nothing was lost.</p><a>Try again</a></div></div>
+          <div class="sk" style="height:12px;margin-top:16px;width:70%;animation:none;opacity:.5"></div>
+          <div class="sk" style="height:12px;margin-top:10px;width:50%;animation:none;opacity:.5"></div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-h"><b><span>06</span>Modals</b><em>Confirm</em></div>
+        <div class="scard-body">
+          <div class="mrow"><img src="assets/img/av-daniel.jpg" alt=""><b>Daniel Kim</b><span class="st st-green">Active</span></div>
+          <div class="mrow"><img src="assets/img/av-sofia.jpg" alt=""><b>Sofia Reyes</b><span class="st st-green">Active</span></div>
+          <div class="modal-demo"><div><b>Release $1,200 to Daniel?</b><p>Milestone 2 will be marked complete.</p><div class="row"><span>Cancel</span><span class="p">Release</span></div></div></div>
+        </div>
+      </div>
+      <div class="scard">
+        <div class="scard-h"><b><span>07</span>Long content</b><em>Wraps cleanly</em></div>
+        <div class="scard-body" style="font-size:12.5px;color:var(--muted)">
+          <b style="color:var(--text);font:600 14px var(--display);display:block;margin-bottom:8px">Full stack developer needed for a multi-tenant marketplace with Stripe Connect, role based access and a reporting module</b>
+          Long titles, long names and big numbers wrap or truncate on purpose, never break the layout. Tables keep their columns, cards keep their height.
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:12px"><span class="st st-purple" style="padding:4px 9px;border-radius:999px;font-size:10.5px">React</span><span class="st st-purple" style="padding:4px 9px;border-radius:999px;font-size:10.5px">Node</span><span class="st st-purple" style="padding:4px 9px;border-radius:999px;font-size:10.5px">Stripe</span><span class="st st-purple" style="padding:4px 9px;border-radius:999px;font-size:10.5px">+6</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILM REEL -->
+<section class="reel" id="reel">
+  <div class="reel-title wrap">
+    <span class="eyebrow rv">06 / Made for real work</span>
+    <h2 class="h2 rv">Built for people <br><span class="outline">who get work done.</span></h2>
+  </div>
+  <div class="strip" id="strip1">
+    <div class="frame"><video muted loop playsinline preload="none" poster="assets/video/studio.jpg" data-src="assets/video/studio.mp4"></video><span>GR / 01 / PROFESSIONAL</span></div>
+    <div class="frame"><img src="assets/img/two-desk.jpg" alt="" loading="lazy"><span>GR / 02 / CLIENT</span></div>
+    <div class="frame"><video muted loop playsinline preload="none" poster="assets/video/glasses.jpg" data-src="assets/video/glasses.mp4"></video><span>GR / 03 / FOCUS</span></div>
+    <div class="frame"><img src="assets/img/camera.jpg" alt="" loading="lazy"><span>GR / 04 / INFLUENCER</span></div>
+    <div class="frame"><video muted loop playsinline preload="none" poster="assets/video/laptop-dash.jpg" data-src="assets/video/laptop-dash.mp4"></video><span>GR / 05 / DASHBOARD</span></div>
+    <div class="frame"><img src="assets/img/office-1.jpg" alt="" loading="lazy"><span>GR / 06 / TEAMS</span></div>
+    <div class="frame"><video muted loop playsinline preload="none" poster="assets/video/desk.jpg" data-src="assets/video/desk.mp4"></video><span>GR / 07 / ADMIN</span></div>
+  </div>
+  <div class="strip" id="strip2">
+    <div class="frame"><img src="assets/img/meeting.jpg" alt="" loading="lazy"><span>GR / 08 / CLIENT</span></div>
+    <div class="frame"><video muted loop playsinline preload="none" poster="assets/video/phone-scroll.jpg" data-src="assets/video/phone-scroll.mp4"></video><span>GR / 09 / MOBILE</span></div>
+    <div class="frame"><img src="assets/img/code-desk.jpg" alt="" loading="lazy"><span>GR / 10 / PROFESSIONAL</span></div>
+    <div class="frame"><video muted loop playsinline preload="none" poster="assets/video/meeting.jpg" data-src="assets/video/meeting.mp4"></video><span>GR / 11 / REVIEW</span></div>
+    <div class="frame"><img src="assets/img/team-laptops.jpg" alt="" loading="lazy"><span>GR / 12 / AFFILIATE</span></div>
+    <div class="frame"><video muted loop playsinline preload="none" poster="assets/video/typing.jpg" data-src="assets/video/typing.mp4"></video><span>GR / 13 / BIDS</span></div>
+    <div class="frame"><img src="assets/img/pointing.jpg" alt="" loading="lazy"><span>GR / 14 / HANDOFF</span></div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="sec" id="plan">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow rv">07 / The plan</span>
+        <h2 class="h2 rv">Small steps. <em>Pay as you see it.</em></h2>
+      </div>
+      <p class="lead rv">Phase 1 builds the foundation so every page after it is faster and stays consistent. Each milestone ends with something you can review and approve.</p>
+    </div>
+
+    <div class="plan-grid">
+      <svg class="plan-line" viewBox="0 0 1000 40" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="pg" x1="0" x2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset=".5" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22c55e"/></linearGradient></defs>
+        <path id="planPath" d="M10 30 C 200 30, 220 6, 500 6 S 800 30, 990 30"/>
+      </svg>
+      <div class="mcard rv" style="--c:var(--teal)">
+        <div class="mtag">Milestone 1 / Days 1 - 3</div>
+        <h3>Sidebar system</h3>
+        <div class="price">$120</div><div class="days">3 days</div>
+        <ul>
+          <li><i data-lucide="check"></i>Sidebar on desktop, laptop and mobile</li>
+          <li><i data-lucide="check"></i>Every state: hover, active, focus, collapsed, tooltips, badges</li>
+          <li><i data-lucide="check"></i>Spec sheet so devs build it the same everywhere</li>
+        </ul>
+      </div>
+      <div class="mcard rv" style="--c:var(--purple)">
+        <div class="mtag">Milestone 2 / Days 4 - 6</div>
+        <h3>Layout shell and parts</h3>
+        <div class="price">$130</div><div class="days">3 days</div>
+        <ul>
+          <li><i data-lucide="check"></i>Page grid for all 3 devices</li>
+          <li><i data-lucide="check"></i>Top bar, headers, tabs, cards, tables, forms</li>
+          <li><i data-lucide="check"></i>Applied to 3 key pages so you see it working</li>
+        </ul>
+      </div>
+      <div class="mcard rv" style="--c:var(--green)">
+        <div class="mtag">Milestone 3 / Days 7 - 10</div>
+        <h3>First user type, fully done</h3>
+        <div class="price">$200</div><div class="days">4 days</div>
+        <ul>
+          <li><i data-lucide="check"></i>Client pages in all 3 sizes</li>
+          <li><i data-lucide="check"></i>Every tab and sub-view state</li>
+          <li><i data-lucide="check"></i>Clean handoff, named and ready for devs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="plan-total rv">
+      <b>$450 USD<span>/ 10 days</span></b>
+      <p>Each milestone is funded one at a time through Freelancer. You only pay for work you have seen and approved.</p>
+    </div>
+
+    <div class="roadmap">
+      <div class="rv" style="--c:var(--teal)"><small>Phase 1</small><b>Sidebar, layout shell, Client pages</b><span>10 days</span></div>
+      <div class="rv" style="--c:var(--purple)"><small>Phase 2</small><b>Professional and Influencer pages</b><span>3 - 4 weeks</span></div>
+      <div class="rv" style="--c:var(--green)"><small>Phase 3</small><b>Admin and Affiliate pages</b><span>3 - 4 weeks</span></div>
+      <div class="rv" style="--c:var(--orange)"><small>Phase 4</small><b>Policy, demo and outer pages, polish</b><span>2 - 3 weeks</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final grain">
+  <video muted loop playsinline preload="none" poster="assets/video/network.jpg" data-src="assets/video/network.mp4"></video>
+  <div class="wrap">
+    <span class="eyebrow rv">Ready when you are</span>
+    <h2 class="rv">Click around.<br><span style="background:linear-gradient(100deg,var(--teal),var(--purple-hi),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent">It's all live.</span></h2>
+    <p class="lead rv">Five user types, 43 pages, every tab, and a state switcher in the corner so you can see loading, empty and error views on any page.</p>
+    <a class="btn btn-primary rv" href="app.html" data-magnetic>Open the live dashboard <i data-lucide="arrow-up-right"></i></a>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <span>Concept demo for GigResource UI refinement. Prepared by Ricardo Jose.</span>
+    <span>Photos: Unsplash. Video: Mixkit. Demo data is sample data.</span>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.min.js"></script>
+<script src="assets/js/showcase.js"></script>
+<script type="module" src="assets/js/hero3d.js"></script>
+</body>
+</html>
